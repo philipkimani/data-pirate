@@ -1,4 +1,5 @@
-# data_pirate
+# Quarto background
+
 R Quarto is a document format that combines the power of R and Markdown to create dynamic and reproducible documents. It allows you to easily embed R code and its outputs, creating a fully integrated workflow for data analysis, visualization, and reporting.
 
 As of 2021, R Quarto is actively maintained and developed by a community of contributors. Its future looks promising, as it has gained popularity among data scientists and researchers who need to create high-quality reports and publications.
