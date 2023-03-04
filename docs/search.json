@@ -11,12 +11,12 @@
     "href": "index.html",
     "title": "data_pirate blog",
     "section": "",
-    "text": "How map2 function in purr in R works\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMar 5, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMar 5, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nMar 2, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "How R’s map2 function works\n\n\n\n\n\n\n\ndata\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMar 5, 2023\n\n\nPhilip Kimani\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMar 5, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nMar 2, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/mutating join/index.html",
     "href": "posts/mutating join/index.html",
-    "title": "How map2 function in purr in R works",
+    "title": "How R’s map2 function works",
     "section": "",
     "text": "The map2() function in the purrr package of R is used to apply a function to elements of two or more vectors or lists in a pairwise fashion. It iterates over the corresponding elements of the input vectors/lists and returns a new list with the output of applying the specified function to each pair of elements.\nThe basic syntax for map2() is as follows:\n\n#map2(.x, .y, .f, ...)\n\nwhere:\n\n.x, .y: input vectors or lists to iterate over.\n.f: function to apply to each pair of elements from .x and .y. This can be a function name or a lambda function defined inline with the formula syntax (~).\n...: additional arguments to pass to .f.\n\nFor example, let’s say we have two vectors x and y containing numbers, and we want to calculate the sum of the corresponding elements. We can use map2() as follows:\n\nlibrary(purrr)\n\nx <- c(1, 2, 3)\ny <- c(4, 5, 6)\n\nsums <- map2(x, y, ~ .x + .y)\n\nsums\n\n[[1]]\n[1] 5\n\n[[2]]\n[1] 7\n\n[[3]]\n[1] 9\n\n# Output: [1] 5 7 9\n\nHere, the lambda function ~ .x + .y takes two arguments (.x and .y) and returns their sum. map2() applies this function to each pair of elements from x and y, and returns a list with the sums."
   },

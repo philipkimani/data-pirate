@@ -1,6 +1,6 @@
 ---
 title: "How R's map2 function  works"
-author: "Harlow Malloc"
+author: "Philip Kimani"
 date: "2023-03-05"
 categories: [data, code, analysis]
 image: "image.jpg"
