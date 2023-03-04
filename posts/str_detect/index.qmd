@@ -42,7 +42,7 @@ starts_with_a_or_b
 
 In this case, we use the regular expression **`"^(a|b)"`**, which matches any string that starts with either the letter "a" or the letter "b". The resulting **`starts_with_a_or_b`** vector contains the values **`TRUE`**, **`TRUE`**, **`FALSE`**, **`FALSE`**, and **`FALSE`**, because the first two elements of **`fruits`** start with either "a" or "b" and the remaining elements do not.
 
-Background
+# Background
 
 **`stringr`** is a package in R that provides a suite of functions for working with strings. It builds on top of the base R string functions (like **`substr`**, **`grep`**, and **`gsub`**) to provide a more consistent and user-friendly set of tools.
 
