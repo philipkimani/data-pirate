@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "data_pirate blog",
     "section": "",
-    "text": "How R’s map2 function works\n\n\n\n\n\n\n\ndata\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMar 5, 2023\n\n\nPhilip Kimani\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMar 5, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nMar 2, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "How R’s map2 function works\n\n\n\n\n\n\n\ndata\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMar 5, 2023\n\n\nPhilip Kimani\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMar 5, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nHow str_detect in R works\n\n\n\n\n\n\n\ndata\n\n\nR\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nMar 5, 2023\n\n\nPhilip Kimani\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nMar 2, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/mutating join/index.html",
@@ -26,6 +26,13 @@
     "title": "Post With Code",
     "section": "",
     "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/str_detect/index.html",
+    "href": "posts/str_detect/index.html",
+    "title": "How str_detect in R works",
+    "section": "",
+    "text": "Here’s an example dataset and code that demonstrates how the str_detect function in R works:\n\n# Load the stringr package, which contains the str_detect function\nlibrary(stringr)\n\n# Create a sample dataset\nfruits <- c(\"apple\", \"banana\", \"cherry\", \"date\", \"elderberry\")\n\n# Use str_detect to check if each element in the fruits vector contains the letter \"a\"\nhas_a <- str_detect(fruits, \"a\")\n\n# Print the results\nhas_a\n\n[1]  TRUE  TRUE FALSE  TRUE FALSE\n\n\nThis code first loads the stringr package, which contains the str_detect function. We then create a sample dataset called fruits that contains five strings representing different types of fruit.\nWe then use the str_detect function to check if each element in the fruits vector contains the letter “a”. The str_detect function takes two arguments: the first is the vector of strings to search, and the second is the pattern to search for. In this case, we use the pattern \"a\", which matches any string that contains the letter “a”.\nThe result of the str_detect function is a logical vector indicating whether each element in the fruits vector contains the pattern. In this case, the has_a vector contains the values TRUE, TRUE, TRUE, TRUE, and FALSE, because the first four elements of fruits contain the letter “a” and the last element does not.\nYou can also use regular expressions to search for more complex patterns using str_detect. For example, if you wanted to find all fruits that start with the letter “a” or “b”, you could use the following code:\n\n# Use str_detect to check if each element in the fruits vector starts with \"a\" or \"b\"\nstarts_with_a_or_b <- str_detect(fruits, \"^(a|b)\")\n\n# Print the results\nstarts_with_a_or_b\n\n[1]  TRUE  TRUE FALSE FALSE FALSE\n\n\nIn this case, we use the regular expression \"^(a|b)\", which matches any string that starts with either the letter “a” or the letter “b”. The resulting starts_with_a_or_b vector contains the values TRUE, TRUE, FALSE, FALSE, and FALSE, because the first two elements of fruits start with either “a” or “b” and the remaining elements do not."
   },
   {
     "objectID": "posts/welcome/index.html",

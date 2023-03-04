@@ -1,0 +1,14 @@
+{
+  "hash": "fe4f9967a7209145f59eced16184e60b",
+  "result": {
+    "markdown": "---\ntitle: \"How str_detect in R works\"\nauthor: \"Philip Kimani\"\ndate: \"2023-03-05\"\ncategories: [data, R, Quarto]\nimage: \"image.jpg\"\n---\n\n\nHere's an example dataset and code that demonstrates how the **`str_detect`** function in R works:\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Load the stringr package, which contains the str_detect function\nlibrary(stringr)\n\n# Create a sample dataset\nfruits <- c(\"apple\", \"banana\", \"cherry\", \"date\", \"elderberry\")\n\n# Use str_detect to check if each element in the fruits vector contains the letter \"a\"\nhas_a <- str_detect(fruits, \"a\")\n\n# Print the results\nhas_a\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1]  TRUE  TRUE FALSE  TRUE FALSE\n```\n:::\n:::\n\n\nThis code first loads the **`stringr`** package, which contains the **`str_detect`** function. We then create a sample dataset called **`fruits`** that contains five strings representing different types of fruit.\n\nWe then use the **`str_detect`** function to check if each element in the **`fruits`** vector contains the letter \"a\". The **`str_detect`** function takes two arguments: the first is the vector of strings to search, and the second is the pattern to search for. In this case, we use the pattern **`\"a\"`**, which matches any string that contains the letter \"a\".\n\nThe result of the **`str_detect`** function is a logical vector indicating whether each element in the **`fruits`** vector contains the pattern. In this case, the **`has_a`** vector contains the values **`TRUE`**, **`TRUE`**, **`TRUE`**, **`TRUE`**, and **`FALSE`**, because the first four elements of **`fruits`** contain the letter \"a\" and the last element does not.\n\nYou can also use regular expressions to search for more complex patterns using **`str_detect`**. For example, if you wanted to find all fruits that start with the letter \"a\" or \"b\", you could use the following code:\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Use str_detect to check if each element in the fruits vector starts with \"a\" or \"b\"\nstarts_with_a_or_b <- str_detect(fruits, \"^(a|b)\")\n\n# Print the results\nstarts_with_a_or_b\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1]  TRUE  TRUE FALSE FALSE FALSE\n```\n:::\n:::\n\n\nIn this case, we use the regular expression **`\"^(a|b)\"`**, which matches any string that starts with either the letter \"a\" or the letter \"b\". The resulting **`starts_with_a_or_b`** vector contains the values **`TRUE`**, **`TRUE`**, **`FALSE`**, **`FALSE`**, and **`FALSE`**, because the first two elements of **`fruits`** start with either \"a\" or \"b\" and the remaining elements do not.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

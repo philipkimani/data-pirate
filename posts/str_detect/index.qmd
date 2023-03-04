@@ -1,0 +1,43 @@
+---
+title: "How str_detect in R works"
+author: "Philip Kimani"
+date: "2023-03-05"
+categories: [data, R, Quarto]
+image: "image.jpg"
+---
+
+Here's an example dataset and code that demonstrates how the **`str_detect`** function in R works:
+
+```{r}
+# Load the stringr package, which contains the str_detect function
+library(stringr)
+
+# Create a sample dataset
+fruits <- c("apple", "banana", "cherry", "date", "elderberry")
+
+# Use str_detect to check if each element in the fruits vector contains the letter "a"
+has_a <- str_detect(fruits, "a")
+
+# Print the results
+has_a
+
+```
+
+This code first loads the **`stringr`** package, which contains the **`str_detect`** function. We then create a sample dataset called **`fruits`** that contains five strings representing different types of fruit.
+
+We then use the **`str_detect`** function to check if each element in the **`fruits`** vector contains the letter "a". The **`str_detect`** function takes two arguments: the first is the vector of strings to search, and the second is the pattern to search for. In this case, we use the pattern **`"a"`**, which matches any string that contains the letter "a".
+
+The result of the **`str_detect`** function is a logical vector indicating whether each element in the **`fruits`** vector contains the pattern. In this case, the **`has_a`** vector contains the values **`TRUE`**, **`TRUE`**, **`TRUE`**, **`TRUE`**, and **`FALSE`**, because the first four elements of **`fruits`** contain the letter "a" and the last element does not.
+
+You can also use regular expressions to search for more complex patterns using **`str_detect`**. For example, if you wanted to find all fruits that start with the letter "a" or "b", you could use the following code:
+
+```{r}
+# Use str_detect to check if each element in the fruits vector starts with "a" or "b"
+starts_with_a_or_b <- str_detect(fruits, "^(a|b)")
+
+# Print the results
+starts_with_a_or_b
+
+```
+
+In this case, we use the regular expression **`"^(a|b)"`**, which matches any string that starts with either the letter "a" or the letter "b". The resulting **`starts_with_a_or_b`** vector contains the values **`TRUE`**, **`TRUE`**, **`FALSE`**, **`FALSE`**, and **`FALSE`**, because the first two elements of **`fruits`** start with either "a" or "b" and the remaining elements do not.
