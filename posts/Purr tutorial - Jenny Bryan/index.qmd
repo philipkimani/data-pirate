@@ -1,0 +1,64 @@
+---
+title: "How to sample from groups where n varies by group"
+author: "Philip Kimani"
+date: "2023-03-05"
+categories: [purr, R, Quarto]
+image: "logo.png"
+---
+
+# Sample from groups, n varies by group
+
+Ref: [Article by Jenny Bryan](https://jennybc.github.io/purrr-tutorial/ls12_different-sized-samples.html "original purr tutorial")
+
+The R code provided below performs the following operations:
+
+1.  **`iris`** data frame is loaded (if not already loaded). The **`iris`** data frame is a built-in data frame in R, which contains measurements of the sepal length, sepal width, petal length, and petal width of three species of iris flowers (Setosa, Versicolor, and Virginica).
+
+2.  The **`group_by`** function from the **`dplyr`** package is used to group the **`iris`** data frame by the **`Species`** column. This means that all rows with the same **`Species`** value are grouped together.
+
+3.  The **`nest`** function from the **`tidyr`** package is used to create a new data frame where the data for each group is contained in a nested data frame column. This means that the resulting data frame will have one row per unique **`Species`** value, and each row will have a nested data frame column containing the data for that **`Species`**.
+
+4.  The **`ungroup`** function is used to remove the grouping from the data frame.
+
+5.  The **`mutate`** function is used to add a new column **`n`** to the data frame, which contains the values **`2`**, **`5`**, and **`3`**. These values are recycled to match the number of rows in the data frame. The resulting data frame will have a new column **`n`** with these values.
+
+```{r}
+suppressMessages(library(dplyr))
+library(purrr)
+library(tidyr)
+set.seed(4561)
+
+(nested_iris <- iris %>%
+    group_by(Species) %>%   # prep for work by Species
+    nest() %>%              # --> one row per Species
+    ungroup() %>% 
+    mutate(n = c(2, 5, 3))) # add sample sizes
+
+```
+
+Overall, this code (above) is creating a new data frame that groups the iris data by Species, nests the data for each Species in a new column, removes the grouping, and adds a new column **`n`** with the values 2, 5, and 3 recycled to match the number of rows in the data frame.
+
+Draw samples
+
+```{r}
+(sampled_iris <- nested_iris %>%
+  mutate(samp = map2(data, n, sample_n)))
+```
+
+The above R code performs the following operations:
+
+1.  **`nested_iris`** is a data frame that has been created in previous code, which groups the **`iris`** data frame by **`Species`** and nests the data for each group in a new column.
+
+2.  The **`map2`** function from the **`purrr`** package is used to apply a function to each element of two lists in parallel. In this case, the two lists are the **`data`** column and the **`n`** column of the **`nested_iris`** data frame. The **`data`** column is the nested data frame for each **`Species`**, and the **`n`** column contains the values **`2`**, **`5`**, and **`3`** that were added in the previous code. The **`sample_n`** function is used to randomly sample rows from each nested data frame according to the corresponding value in the **`n`** column. This means that for each **`Species`**, a random sample of rows is taken from the nested data frame.
+
+Overall, this code is taking the **`nested_iris`** data frame, and for each **`Species`**, it is sampling a random subset of rows from the nested data frame based on the corresponding value in the **`n`** column. The resulting data frame **`sampled_iris`** has the same structure as **`nested_iris`**, but with a new column **`samp`** that contains the randomly sampled rows for each **`Species`**.
+
+```{r}
+sampled_iris %>% 
+  select(-data) %>%
+  unnest(samp)
+```
+
+Last step:
+
+-   Unnest, which essentially rowbinds the data frames in `samp` and replicates `Species` as necessary.

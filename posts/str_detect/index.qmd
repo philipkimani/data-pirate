@@ -6,7 +6,7 @@ categories: [data, R, Quarto]
 image: "image.jpg"
 ---
 
-Here's an example dataset and code that demonstrates how the **`str_detect`** function in R works:
+# Here's an example dataset and code that demonstrates how the **`str_detect`** function in R works:
 
 ```{r}
 # Load the stringr package, which contains the str_detect function
