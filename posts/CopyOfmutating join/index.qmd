@@ -1,5 +1,5 @@
 ---
-title: "Portfolio blog"
+title: "How R's map2 function  works"
 author: "Philip Kimani"
 date: "2023-03-05"
 categories: [data, code, analysis]
@@ -39,3 +39,5 @@ sums
 ```
 
 Here, the lambda function **`~ .x + .y`** takes two arguments (**`.x`** and **`.y`**) and returns their sum. **`map2()`** applies this function to each pair of elements from **`x`** and **`y`**, and returns a list with the sums.
+
+

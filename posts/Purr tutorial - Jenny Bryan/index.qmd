@@ -14,7 +14,7 @@ The R code provided below performs the following operations:
 
 1.  **`iris`** data frame is loaded (if not already loaded). The **`iris`** data frame is a built-in data frame in R, which contains measurements of the sepal length, sepal width, petal length, and petal width of three species of iris flowers (Setosa, Versicolor, and Virginica).
 
-2.  The **`group_by`** function from the **`dplyr`** package is used to group the **`iris`** data frame by the **`Species`** column. This means that all rows with the same **`Species`** value are grouped together.
+2.  The **`group_by`** function from the **`dplyr`** package is used to group the **`iris`** data frame by the **`Species`** column. \## This means that all rows with the same **`Species`** value are grouped together.
 
 3.  The **`nest`** function from the **`tidyr`** package is used to create a new data frame where the data for each group is contained in a nested data frame column. This means that the resulting data frame will have one row per unique **`Species`** value, and each row will have a nested data frame column containing the data for that **`Species`**.
 

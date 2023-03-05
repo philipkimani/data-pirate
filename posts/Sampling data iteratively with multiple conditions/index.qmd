@@ -1,0 +1,95 @@
+---
+title: "Random samples based on a set of conditions"
+author: "Philip Kimani"
+date: "2023-03-05"
+categories: [purr, R, Quarto]
+image: "logo.png"
+---
+
+# Sample data based on conditions (separate dataframe)
+
+I have shared this post here as I would to develop the solution further over time and potentially develop a package out of that in future.
+
+```{r}
+suppressMessages(library(tidyverse))
+
+data.A <- tibble::tribble(
+  ~business.name, ~product.type, ~quantity.sold,
+             "A",           "x",             3L,
+             "B",           "y",             5L,
+             "C",           "z",             4L,
+             "C",           "x",             2L
+  )
+
+data.B <- tibble::tribble(
+  ~business.name, ~product.type,       ~SKU,
+             "A",           "x", 255353845L,
+             "A",           "x", 255356319L,
+             "A",           "x", 255362751L,
+             "A",           "x", 255370204L,
+             "A",           "x", 255454003L,
+             "A",           "x", 255458362L,
+             "A",           "x", 255593042L,
+             "A",           "x", 255636116L,
+             "A",           "x", 255717549L,
+             "B",           "y", 255844018L,
+             "B",           "y", 255909292L,
+             "B",           "y", 255915742L,
+             "B",           "y", 255919530L,
+             "B",           "y", 255923843L,
+             "B",           "y", 255933049L,
+             "B",           "y", 255936045L,
+             "B",           "y", 255941696L,
+             "B",           "y", 255946809L,
+             "B",           "y", 255949532L,
+             "B",           "y", 255966127L,
+             "B",           "y", 255997292L,
+             "C",           "z", 255998831L,
+             "C",           "z", 256001327L,
+             "C",           "z", 256003617L,
+             "C",           "z", 256005181L,
+             "C",           "z", 256011669L,
+             "C",           "z", 256013837L,
+             "C",           "z", 256017545L,
+             "C",           "z", 256019818L,
+             "C",           "z", 256036093L,
+             "C",           "z", 256040208L,
+             "C",           "z", 256051672L,
+             "C",           "x", 256138309L,
+             "C",           "x", 256161535L,
+             "C",           "x", 256189403L,
+             "C",           "x", 256227739L,
+             "C",           "x", 256236233L,
+             "C",           "x", 256240570L,
+             "C",           "x", 256245429L,
+             "C",           "x", 256662283L,
+             "C",           "x", 256671028L,
+             "C",           "x", 256672339L,
+             "C",           "x", 256678241L,
+             "C",           "x", 256683024L,
+             "C",           "x", 256718422L,
+             "C",           "x", 256779953L
+  )
+
+
+map_dfr(1:nrow(data.A), \(x_){ 
+  row <- slice(data.A,x_)
+  target <- row$quantity.sold
+  candidates <- row %>%  left_join(data.B,
+                                 multiple="all")
+  
+  candidates_sample <- slice_sample(candidates,
+                                   n = target)
+  candidates_sample
+  })
+```
+
+The given R code uses the **`map_dfr()`** function from the **`purrr`** package to iterate over each row of a data frame called **`frst`**.
+
+For each row, the code selects the **`quantity.sold`** value and saves it as the **`target`** variable. Then, it performs a left join with another data frame called **`scnd`** using the **`left_join()`** function from the **`dplyr`** package. The **`multiple = "all"`** argument specifies that the join should match all occurrences of the join key.
+
+The resulting data frame is then subsetted to a sample of rows with size **`n = target`** using the **`slice_sample()`** function from the **`dplyr`** package. Finally, the function returns the subsetted data frame.
+
+The **`\(x_)`** syntax is used to define an anonymous function that takes a single argument **`x_`**. In this case, **`x_`** represents the row index of **`frst`** being processed by the function. The function body is the set of operations described above.
+
+The **`map_dfr()`** function combines the results of each iteration into a single data frame, with rows being appended to each other. The resulting data frame will have the same number of columns as the output of the anonymous function, and as many rows as there are in **`frst`**.
