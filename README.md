@@ -7,3 +7,5 @@ As of 2021, R Quarto is actively maintained and developed by a community of cont
 One of the main advantages of R Quarto is its flexibility and extensibility. It allows users to incorporate different programming languages, such as Python, into their documents, making it a versatile tool for data analysis and scientific communication. Additionally, R Quarto integrates well with version control systems, such as Git, allowing users to collaborate on documents and track changes over time.
 
 R Quarto has a bright future ahead, as it continues to evolve and gain popularity among data scientists and researchers. Its flexibility, reproducibility, and versatility make it an essential tool for creating dynamic and reproducible documents.
+
+In this project I will be publishing R tutorials to help sharpen my Quarto publishing skills. 
