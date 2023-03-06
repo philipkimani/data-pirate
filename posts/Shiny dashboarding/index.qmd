@@ -9,6 +9,8 @@ bibliography: references.bib
 
 **Create and share interactive reports using Shiny apps**
 
+![](shiny.png){fig-align="center" width="130"}
+
 R Shiny is a web application framework used for creating interactive web applications and dashboards.
 
 Here are some key benefits of using[@granjon2022a] R Shiny for creating dashboards for an organization:
