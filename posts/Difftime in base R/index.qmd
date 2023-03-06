@@ -1,0 +1,38 @@
+---
+title: "Difference between subsequent dates in a dataframe in R"
+author: "Philip Kimani"
+date: "2023-03-06"
+categories: [data, Shiny, viz]
+---
+
+**How to calculate the difference between subsequent date times in a dataframe**
+
+To calculate the difference between subsequent dates in a dataframe in R using **`dplyr`** and **`lubridate`**, you can use the **`mutate`** function to create a new column that contains the differences between subsequent dates.
+
+Here's an example code snippet:
+
+```{r}
+suppressMessages(library(dplyr))
+suppressMessages(library(lubridate))
+
+# create a sample dataframe
+df <- data.frame(id = c(1, 2, 3),
+                 date = c("2022-01-01", "2022-01-05", "2022-01-10"))
+
+# convert the date column to the date format using ymd() function from lubridate
+df$date <- ymd(df$date)
+
+# use dplyr to calculate the differences between subsequent dates in days
+df <- df %>%
+  mutate(diff_days = difftime(date, lag(date), units = "days"))
+
+# print the updated dataframe
+df
+
+```
+
+In the code above, we first create a sample dataframe **`df`** that contains an **`id`** column and a **`date`** column. We convert the **`date`** column to the date format using the **`ymd`** function from **`lubridate`**.
+
+Then we use **`dplyr`** to calculate the differences between subsequent dates in days by using the **`mutate`** function. We create a new column called **`diff_days`** and use the **`difftime`** function to calculate the differences between each date and its preceding date using the **`lag`** function. We specify the **`units`** argument as "days" to get the differences in days.
+
+Finally, we print the updated dataframe that includes the **`diff_days`** column. Note that the first row will have an NA value because there is no preceding date to calculate the difference with.

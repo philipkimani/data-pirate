@@ -1,0 +1,14 @@
+{
+  "hash": "085319762cce08265928e1a77a24b594",
+  "result": {
+    "markdown": "---\ntitle: \"Difference between subsequent dates in a dataframe in R\"\nauthor: \"Philip Kimani\"\ndate: \"2023-03-06\"\ncategories: [data, Shiny, viz]\n---\n\n\n**How to calculate the difference between subsequent date times in a dataframe**\n\nTo calculate the difference between subsequent dates in a dataframe in R using **`dplyr`** and **`lubridate`**, you can use the **`mutate`** function to create a new column that contains the differences between subsequent dates.\n\nHere's an example code snippet:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsuppressMessages(library(dplyr))\nsuppressMessages(library(lubridate))\n\n# create a sample dataframe\ndf <- data.frame(id = c(1, 2, 3),\n                 date = c(\"2022-01-01\", \"2022-01-05\", \"2022-01-10\"))\n\n# convert the date column to the date format using ymd() function from lubridate\ndf$date <- ymd(df$date)\n\n# use dplyr to calculate the differences between subsequent dates in days\ndf <- df %>%\n  mutate(diff_days = difftime(date, lag(date), units = \"days\"))\n\n# print the updated dataframe\ndf\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n  id       date diff_days\n1  1 2022-01-01   NA days\n2  2 2022-01-05    4 days\n3  3 2022-01-10    5 days\n```\n:::\n:::\n\n\nIn the code above, we first create a sample dataframe **`df`** that contains an **`id`** column and a **`date`** column. We convert the **`date`** column to the date format using the **`ymd`** function from **`lubridate`**.\n\nThen we use **`dplyr`** to calculate the differences between subsequent dates in days by using the **`mutate`** function. We create a new column called **`diff_days`** and use the **`difftime`** function to calculate the differences between each date and its preceding date using the **`lag`** function. We specify the **`units`** argument as \"days\" to get the differences in days.\n\nFinally, we print the updated dataframe that includes the **`diff_days`** column. Note that the first row will have an NA value because there is no preceding date to calculate the difference with.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
