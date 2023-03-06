@@ -1,0 +1,44 @@
+---
+title: "Shiny for data visualization in modern day organization"
+author: "Philip Kimani"
+date: "2023-03-06"
+categories: [data, Shiny, viz]
+image: "shiny.png"
+bibliography: references.bib
+---
+
+**Create and share interactive reports using Shiny apps**
+
+R Shiny is a web application framework used for creating interactive web applications and dashboards.
+
+Here are some key benefits of using[@granjon2022a] R Shiny for creating dashboards for an organization:
+
+1\. Easy to Use: R Shiny allows data analysts and statisticians to create interactive dashboards without the need for advanced web development skills. This means that you can focus on the data analysis and visualizations rather than the coding.
+
+2\. Customizable: R Shiny provides a wide range of customization options, allowing you to create dashboards that meet your organization's specific needs. You can easily add features, such as interactive filters and plots, to your dashboard to provide a more engaging user experience.
+
+3\. Real-time Analytics: R Shiny enables real-time analytics, which means you can update your dashboards with the latest data as soon as it becomes available. This is particularly useful for organizations that require up-to-date information to make informed decisions[@li2015].
+
+4\. Interactive Visualization: R Shiny allows you to create interactive visualizations that enable users to explore the data and gain insights quickly. This can help to enhance the understanding of complex data and can lead to better decision-making[@sievert2020; @sievert2020a; @sievert2020c].
+
+5\. Cost-effective: R Shiny is an open-source framework, which means it is free to use. This makes it an ideal solution for organizations that want to create interactive dashboards without investing heavily in proprietary software[@kavanagh2004a].
+
+6\. Scalable: R Shiny can handle large datasets and can be used to create dashboards for multiple users. This means that it can be used to create enterprise-level dashboards that can be used across the organization.
+
+Overall, R Shiny is an excellent tool for creating dashboards for organizations that want to make data-driven decisions. Its ease of use, customization options, real-time analytics, and interactive visualizations make it a powerful solution for creating engaging and informative dashboards.
+
+\*\*Machine Learning Context\*\*
+
+R Shiny can also be beneficial in a machine learning context. Here are some of the benefits of using R Shiny for machine learning:
+
+1\. Interactivity: R Shiny provides an interactive environment for machine learning, which allows users to interact with the models and get immediate feedback on their predictions. This can help data scientists to explore their models more easily and to identify potential issues.
+
+2\. Visualization: R Shiny allows you to create interactive visualizations of machine learning models, making it easier to communicate the results to stakeholders. This can help to enhance the understanding of complex models and can lead to better decision-making.
+
+3\. Deployment: R Shiny makes it easy to deploy machine learning models as web applications. This means that users can access the models through a web browser, without needing to install any software or libraries locally. This can help to improve the accessibility of machine learning models and to increase their adoption[@singh2020c; @singh2020b; @sharma2022; @zaman2020].
+
+4\. Scalability: R Shiny is a scalable framework, which means it can handle large datasets and can be used to create machine learning models for multiple users. This can help to create enterprise-level machine learning applications that can be used across the organization.
+
+5\. Customization: R Shiny provides a wide range of customization options, allowing you to create machine learning applications that meet your organization's specific needs. You can easily add features, such as interactive filters and plots, to your application to provide a more engaging user experience.
+
+Overall, R Shiny can be a powerful tool in a machine learning context. Its interactivity, visualization, deployment, scalability, and customization options make it an excellent solution for creating machine learning applications that are accessible, informative, and engaging.

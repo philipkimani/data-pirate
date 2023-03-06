@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Philip Kimani">
-<meta name="dcterms.date" content="2023-03-05">
+<meta name="dcterms.date" content="2023-03-06">
 
-<title>data_pirate - How R’s map2 function works</title>
+<title>data_pirate - Shiny for data visualization in modern day organization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,69 +22,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -168,11 +124,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">How R’s map2 function works</h1>
+      <h1 class="title">Shiny for data visualization in modern day organization</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">data</div>
-                <div class="quarto-category">code</div>
-                <div class="quarto-category">analysis</div>
+                <div class="quarto-category">Shiny</div>
+                <div class="quarto-category">viz</div>
               </div>
                   </div>
   </div>
@@ -190,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 5, 2023</p>
+        <p class="date">March 6, 2023</p>
       </div>
     </div>
     
@@ -208,44 +164,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>The <strong><code>map2()</code></strong> function in the <strong><code>purrr</code></strong> package of R is used to apply a function to elements of two or more vectors or lists in a pairwise fashion. It iterates over the corresponding elements of the input vectors/lists and returns a new list with the output of applying the specified function to each pair of elements.</p>
-<p>The basic syntax for <strong><code>map2()</code></strong> is as follows:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#map2(.x, .y, .f, ...)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Create and share interactive reports using Shiny apps</strong></p>
+<p>R Shiny is a web application framework used for creating interactive web applications and dashboards.</p>
+<p>Here are some key benefits of using<span class="citation" data-cites="granjon2022a">(<a href="#ref-granjon2022a" role="doc-biblioref">Granjon 2022</a>)</span> R Shiny for creating dashboards for an organization:</p>
+<p>1. Easy to Use: R Shiny allows data analysts and statisticians to create interactive dashboards without the need for advanced web development skills. This means that you can focus on the data analysis and visualizations rather than the coding.</p>
+<p>2. Customizable: R Shiny provides a wide range of customization options, allowing you to create dashboards that meet your organization’s specific needs. You can easily add features, such as interactive filters and plots, to your dashboard to provide a more engaging user experience.</p>
+<p>3. Real-time Analytics: R Shiny enables real-time analytics, which means you can update your dashboards with the latest data as soon as it becomes available. This is particularly useful for organizations that require up-to-date information to make informed decisions<span class="citation" data-cites="li2015">(<a href="#ref-li2015" role="doc-biblioref">Li and Mao 2015</a>)</span>.</p>
+<p>4. Interactive Visualization: R Shiny allows you to create interactive visualizations that enable users to explore the data and gain insights quickly. This can help to enhance the understanding of complex data and can lead to better decision-making<span class="citation" data-cites="sievert2020 sievert2020a sievert2020c">(<a href="#ref-sievert2020" role="doc-biblioref">Sievert 2020c</a>, <a href="#ref-sievert2020a" role="doc-biblioref">2020b</a>, <a href="#ref-sievert2020c" role="doc-biblioref">2020a</a>)</span>.</p>
+<p>5. Cost-effective: R Shiny is an open-source framework, which means it is free to use. This makes it an ideal solution for organizations that want to create interactive dashboards without investing heavily in proprietary software<span class="citation" data-cites="kavanagh2004a">(<a href="#ref-kavanagh2004a" role="doc-biblioref">Kavanagh 2004</a>)</span>.</p>
+<p>6. Scalable: R Shiny can handle large datasets and can be used to create dashboards for multiple users. This means that it can be used to create enterprise-level dashboards that can be used across the organization.</p>
+<p>Overall, R Shiny is an excellent tool for creating dashboards for organizations that want to make data-driven decisions. Its ease of use, customization options, real-time analytics, and interactive visualizations make it a powerful solution for creating engaging and informative dashboards.</p>
+<p>**Machine Learning Context**</p>
+<p>R Shiny can also be beneficial in a machine learning context. Here are some of the benefits of using R Shiny for machine learning:</p>
+<p>1. Interactivity: R Shiny provides an interactive environment for machine learning, which allows users to interact with the models and get immediate feedback on their predictions. This can help data scientists to explore their models more easily and to identify potential issues.</p>
+<p>2. Visualization: R Shiny allows you to create interactive visualizations of machine learning models, making it easier to communicate the results to stakeholders. This can help to enhance the understanding of complex models and can lead to better decision-making.</p>
+<p>3. Deployment: R Shiny makes it easy to deploy machine learning models as web applications. This means that users can access the models through a web browser, without needing to install any software or libraries locally. This can help to improve the accessibility of machine learning models and to increase their adoption<span class="citation" data-cites="singh2020c singh2020b sharma2022 zaman2020">(<a href="#ref-singh2020c" role="doc-biblioref">Singh 2020a</a>, <a href="#ref-singh2020b" role="doc-biblioref">2020b</a>; <a href="#ref-sharma2022" role="doc-biblioref">Sharma and Gupta 2022</a>; <a href="#ref-zaman2020" role="doc-biblioref">Zaman 2020</a>)</span>.</p>
+<p>4. Scalability: R Shiny is a scalable framework, which means it can handle large datasets and can be used to create machine learning models for multiple users. This can help to create enterprise-level machine learning applications that can be used across the organization.</p>
+<p>5. Customization: R Shiny provides a wide range of customization options, allowing you to create machine learning applications that meet your organization’s specific needs. You can easily add features, such as interactive filters and plots, to your application to provide a more engaging user experience.</p>
+<p>Overall, R Shiny can be a powerful tool in a machine learning context. Its interactivity, visualization, deployment, scalability, and customization options make it an excellent solution for creating machine learning applications that are accessible, informative, and engaging.</p>
+
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-granjon2022a" class="csl-entry" role="doc-biblioentry">
+Granjon, David. 2022. <span>“JavaScript for Shiny.”</span> In, 161–86. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9781003124924-10">https://doi.org/10.1201/9781003124924-10</a>.
 </div>
-<p>where:</p>
-<ul>
-<li><p><strong><code>.x</code></strong>, <strong><code>.y</code></strong>: input vectors or lists to iterate over.</p></li>
-<li><p><strong><code>.f</code></strong>: function to apply to each pair of elements from <strong><code>.x</code></strong> and <strong><code>.y</code></strong>. This can be a function name or a lambda function defined inline with the formula syntax (<strong><code>~</code></strong>).</p></li>
-<li><p><strong><code>...</code></strong>: additional arguments to pass to <strong><code>.f</code></strong>.</p></li>
-</ul>
-<p>For example, let’s say we have two vectors <strong><code>x</code></strong> and <strong><code>y</code></strong> containing numbers, and we want to calculate the sum of the corresponding elements. We can use <strong><code>map2()</code></strong> as follows:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>sums <span class="ot">&lt;-</span> <span class="fu">map2</span>(x, y, <span class="sc">~</span> .x <span class="sc">+</span> .y)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>sums</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] 5
-
-[[2]]
-[1] 7
-
-[[3]]
-[1] 9</code></pre>
+<div id="ref-kavanagh2004a" class="csl-entry" role="doc-biblioentry">
+Kavanagh, Paul. 2004. <span>“How Open Source Software Is Developed.”</span> In, 203–19. Elsevier. <a href="https://doi.org/10.1016/b978-155558320-0/50010-6">https://doi.org/10.1016/b978-155558320-0/50010-6</a>.
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: [1] 5 7 9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ref-li2015" class="csl-entry" role="doc-biblioentry">
+Li, Xiaofang, and Yingchi Mao. 2015. <span>“Real-Time Data ETL Framework for Big Real-Time Data Analysis.”</span> <em>2015 IEEE International Conference on Information and Automation</em>, August. <a href="https://doi.org/10.1109/icinfa.2015.7279485">https://doi.org/10.1109/icinfa.2015.7279485</a>.
 </div>
-<p>Here, the lambda function <strong><code>~ .x + .y</code></strong> takes two arguments (<strong><code>.x</code></strong> and <strong><code>.y</code></strong>) and returns their sum. <strong><code>map2()</code></strong> applies this function to each pair of elements from <strong><code>x</code></strong> and <strong><code>y</code></strong>, and returns a list with the sums.</p>
-
-
-
-</main> <!-- /main -->
+<div id="ref-sharma2022" class="csl-entry" role="doc-biblioentry">
+Sharma, Falguni, and Punit Gupta. 2022. <span>“Machine Learning-Based Predictive Model to Improve Cloud Application Performance in Cloud SaaS.”</span> In, 95–118. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9781003185376-6">https://doi.org/10.1201/9781003185376-6</a>.
+</div>
+<div id="ref-sievert2020c" class="csl-entry" role="doc-biblioentry">
+Sievert, Carson. 2020a. <span>“Boxplots.”</span> In, 115–18. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9780429447273-7">https://doi.org/10.1201/9780429447273-7</a>.
+</div>
+<div id="ref-sievert2020a" class="csl-entry" role="doc-biblioentry">
+———. 2020b. <em>Interactive Web-Based Data Visualization with r, Plotly, and Shiny</em>. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9780429447273">https://doi.org/10.1201/9780429447273</a>.
+</div>
+<div id="ref-sievert2020" class="csl-entry" role="doc-biblioentry">
+———. 2020c. <span>“Server-Side Linking with Shiny.”</span> In, 239–310. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9780429447273-21">https://doi.org/10.1201/9780429447273-21</a>.
+</div>
+<div id="ref-singh2020c" class="csl-entry" role="doc-biblioentry">
+Singh, Pramod. 2020a. <span>“Machine Learning Deployment Using Docker.”</span> In, 91–126. Apress. <a href="https://doi.org/10.1007/978-1-4842-6546-8_4">https://doi.org/10.1007/978-1-4842-6546-8_4</a>.
+</div>
+<div id="ref-singh2020b" class="csl-entry" role="doc-biblioentry">
+———. 2020b. <span>“Machine Learning Deployment Using Kubernetes.”</span> In, 127–46. Apress. <a href="https://doi.org/10.1007/978-1-4842-6546-8_5">https://doi.org/10.1007/978-1-4842-6546-8_5</a>.
+</div>
+<div id="ref-zaman2020" class="csl-entry" role="doc-biblioentry">
+Zaman, Faisal. 2020. <em>TensorFlow Lite for Mobile Development</em>. Apress. <a href="https://doi.org/10.1007/978-1-4842-6666-3">https://doi.org/10.1007/978-1-4842-6666-3</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
