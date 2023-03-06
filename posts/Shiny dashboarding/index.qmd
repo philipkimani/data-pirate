@@ -27,18 +27,6 @@ Here are some key benefits of using[@granjon2022a] R Shiny for creating dashboar
 
 Overall, R Shiny is an excellent tool for creating dashboards for organizations that want to make data-driven decisions. Its ease of use, customization options, real-time analytics, and interactive visualizations make it a powerful solution for creating engaging and informative dashboards.
 
-\*\*Machine Learning Context\*\*
+[@singh2020c; @singh2020b; @sharma2022; @zaman2020].
 
-R Shiny can also be beneficial in a machine learning context. Here are some of the benefits of using R Shiny for machine learning:
-
-1\. Interactivity: R Shiny provides an interactive environment for machine learning, which allows users to interact with the models and get immediate feedback on their predictions. This can help data scientists to explore their models more easily and to identify potential issues.
-
-2\. Visualization: R Shiny allows you to create interactive visualizations of machine learning models, making it easier to communicate the results to stakeholders. This can help to enhance the understanding of complex models and can lead to better decision-making.
-
-3\. Deployment: R Shiny makes it easy to deploy machine learning models as web applications. This means that users can access the models through a web browser, without needing to install any software or libraries locally. This can help to improve the accessibility of machine learning models and to increase their adoption[@singh2020c; @singh2020b; @sharma2022; @zaman2020].
-
-4\. Scalability: R Shiny is a scalable framework, which means it can handle large datasets and can be used to create machine learning models for multiple users. This can help to create enterprise-level machine learning applications that can be used across the organization.
-
-5\. Customization: R Shiny provides a wide range of customization options, allowing you to create machine learning applications that meet your organization's specific needs. You can easily add features, such as interactive filters and plots, to your application to provide a more engaging user experience.
-
-Overall, R Shiny can be a powerful tool in a machine learning context. Its interactivity, visualization, deployment, scalability, and customization options make it an excellent solution for creating machine learning applications that are accessible, informative, and engaging.
+Further, R Shiny can be a powerful tool in a machine learning context. Its interactivity, visualization, deployment, scalability, and customization options make it an excellent solution for creating machine learning applications that are accessible, informative, and engaging.
