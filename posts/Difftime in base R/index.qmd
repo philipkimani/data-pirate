@@ -1,38 +1,39 @@
 ---
-title: "Difference between subsequent dates in a dataframe in R"
+title: "Questions to ask to customers that gave low ratings for your company or product"
 author: "Philip Kimani"
-date: "2023-03-06"
-categories: [data, Shiny, viz]
+date: "2023-03-07"
+categories: [research, data collection]
+image: "ambilimon-annamala-poosari-unsplash.jpg"
 ---
 
-**How to calculate the difference between subsequent date times in a dataframe**
+Here are some of the questions that you can ask to customers that gave a low rating for your product or service. The survey can be implemented either through a call center or via online questionnaire.
 
-To calculate the difference between subsequent dates in a dataframe in R using **`dplyr`** and **`lubridate`**, you can use the **`mutate`** function to create a new column that contains the differences between subsequent dates.
+1.  Can you describe your recent experience with our company?
 
-Here's an example code snippet:
+2.  What was the reason for giving us a low rating?
 
-```{r}
-suppressMessages(library(dplyr))
-suppressMessages(library(lubridate))
+3.  Was there anything specific that disappointed you during your experience with us?
 
-# create a sample dataframe
-df <- data.frame(id = c(1, 2, 3),
-                 date = c("2022-01-01", "2022-01-05", "2022-01-10"))
+4.  Did you feel like your needs were met during your interaction with us?
 
-# convert the date column to the date format using ymd() function from lubridate
-df$date <- ymd(df$date)
+5.  Were you satisfied with the level of customer service you received?
 
-# use dplyr to calculate the differences between subsequent dates in days
-df <- df %>%
-  mutate(diff_days = difftime(date, lag(date), units = "days"))
+6.  Did you encounter any difficulties while trying to use our product/service?
 
-# print the updated dataframe
-df
+7.  Was there anything that we could have done to make your experience better?
 
-```
+8.  Did you feel like our company valued your business?
 
-In the code above, we first create a sample dataframe **`df`** that contains an **`id`** column and a **`date`** column. We convert the **`date`** column to the date format using the **`ymd`** function from **`lubridate`**.
+9.  Have you had similar experiences with other companies?
 
-Then we use **`dplyr`** to calculate the differences between subsequent dates in days by using the **`mutate`** function. We create a new column called **`diff_days`** and use the **`difftime`** function to calculate the differences between each date and its preceding date using the **`lag`** function. We specify the **`units`** argument as "days" to get the differences in days.
+10. Would you recommend our company to a friend or colleague?
 
-Finally, we print the updated dataframe that includes the **`diff_days`** column. Note that the first row will have an NA value because there is no preceding date to calculate the difference with.
+11. Do you have any suggestions on how we can improve our products or services?
+
+12. Did you have any issues with our website or mobile app?
+
+13. Were our staff members helpful and knowledgeable?
+
+14. How can we regain your trust and improve your experience with us?
+
+15. What steps can we take to ensure that you have a positive experience with our company in the future?
