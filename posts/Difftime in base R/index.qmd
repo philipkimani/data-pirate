@@ -3,7 +3,6 @@ title: "Questions to ask to customers that gave low ratings for your company or 
 author: "Philip Kimani"
 date: "2023-03-07"
 categories: [research, data collection]
-image: "ambilimon-annamala-poosari-unsplash.jpg"
 ---
 
 Here are some of the questions that you can ask to customers that gave a low rating for your product or service. The survey can be implemented either through a call center or via online questionnaire.

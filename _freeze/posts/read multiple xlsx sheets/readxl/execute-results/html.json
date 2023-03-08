@@ -1,0 +1,14 @@
+{
+  "hash": "e6eac03cce388f0b3f9cfd8cb5619757",
+  "result": {
+    "markdown": "---\ntitle: \"Load multiple xlsx sheets in R\"\nauthor: \"Loffi Ruskins\"\ndate: \"08-03-2023\"\n---\n\n\n**How to read multiple sheets in an Excel spreadsheet in one go!**\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(readxl)\n\n# Define the Excel file path\nexcel_file <- \"testfile.xlsx\"\n\n# Get the sheet names\nsheet_names <- excel_sheets(excel_file)\n\n# Create an empty list to store the data frames\ndf_list <- list()\n\n# Loop through the sheet names and read each sheet into a data frame\nfor (sheet in sheet_names) {\n  df_list[[sheet]] <- read_excel(excel_file, sheet = sheet)\n}\n\n# Access the data frames by sheet name\ndf1 <- df_list[[sheet_names[1]]]\ndf2 <- df_list[[sheet_names[2]]]\n```\n:::\n\n\nIn this example, we first load the \"readxl\" package and define the path to the Excel file. We then use the **`excel_sheets()`** function to get the names of all the sheets in the file. Next, we create an empty list to store the data frames and use a **`for`** loop to read each sheet into a data frame and add it to the list using the sheet name as a key. Finally, we can access the data frames from the list by sheet name.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

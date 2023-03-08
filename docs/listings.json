@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/read multiple xlsx sheets/readxl.html",
       "/posts/Difftime in base R/index.html",
       "/posts/Shiny dashboarding/index.html",
       "/posts/mutating join/index.html",
